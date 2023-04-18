@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <routes>
-   <vType id="nonPlatoon" vClass="passenger" length="5" maxSpeed="45" speedDev="0.0" lcKeepRight="10" color="0,0.67,0"/>
-   <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="40" speedDev="0.0" lcKeepRight="10" color="1,0,0.25"/>
-   <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="40" speedDev="0.0" lcKeepRight="10" color="1,0,0.30"/>
-   <vType id="member" vClass="passenger" length="5" maxSpeed="40" speedDev="0.0" lcKeepRight="10" color="1,0,0.5"/>
+   <vType id="nonPlatoon" vClass="passenger" length="5" maxSpeed="45" speedDev="0.0" color="0,0.67,0"/>
+   <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="40" speedDev="0.0" color="1,0,0"/>
+   <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="40" speedDev="0.0" color="0,1,0"/>
+   <vType id="member" vClass="passenger" length="5" maxSpeed="40" speedDev="0.0" color="0,0,1"/>
    <route id="route0" edges="hw0"/>
 
    <vehicle id="np0" type="nonPlatoon" route="route0" depart="0" departLane="0" departSpeed="max" />
@@ -11,15 +11,15 @@
    <vehicle id="np2" type="nonPlatoon" route="route0" depart="0.2" departLane="2" departSpeed="max" />
    <vehicle id="np3" type="nonPlatoon" route="route0" depart="1.2" departLane="2" departSpeed="max" />
 
-   <vehicle id="car0" type="platoonLeader" route="route0" depart="1" departLane="0" departSpeed="max" />
-   <vehicle id="car1" type="member" route="route0" depart="1.5" departLane="0" departSpeed="max" />
-   <vehicle id="car2" type="member" route="route0" depart="2" departLane="0" departSpeed="max" />
-   <vehicle id="car3" type="laneLeader" route="route0" depart="1" departLane="1" departSpeed="max" />
-   <vehicle id="car4" type="member" route="route0" depart="1.5" departLane="1" departSpeed="max" />
-   <vehicle id="car5" type="member" route="route0" depart="2" departLane="1" departSpeed="max" />
+   <vehicle id="pl" type="platoonLeader" route="route0" depart="3" departLane="0" departSpeed="max" />
+   <vehicle id="m1" type="member" route="route0" depart="4" departLane="0" departSpeed="max" />
+   <vehicle id="m2" type="member" route="route0" depart="5" departLane="0" departSpeed="max" />
+   <vehicle id="ll" type="laneLeader" route="route0" depart="3" departLane="1" departSpeed="max" />
+   <vehicle id="m4" type="member" route="route0" depart="4" departLane="1" departSpeed="max" />
+   <vehicle id="m5" type="member" route="route0" depart="5" departLane="1" departSpeed="max" />
 
-   <vehicle id="np4" type="nonPlatoon" route="route0" depart="3" departLane="0" departSpeed="max" />
-   <vehicle id="np5" type="nonPlatoon" route="route0" depart="3.5" departLane="0" departSpeed="max" />
-   <vehicle id="np6" type="nonPlatoon" route="route0" depart="3" departLane="1" departSpeed="max" />
-   <vehicle id="np7" type="nonPlatoon" route="route0" depart="4" departLane="1" departSpeed="max" />
+   <vehicle id="np4" type="nonPlatoon" route="route0" depart="7" departLane="0" departSpeed="max" />
+   <vehicle id="np5" type="nonPlatoon" route="route0" depart="7" departLane="1" departSpeed="max" />
+   <vehicle id="np6" type="nonPlatoon" route="route0" depart="7" departLane="2" departSpeed="max" />
+   <vehicle id="np7" type="nonPlatoon" route="route0" depart="8" departLane="2" departSpeed="max" />
 </routes>

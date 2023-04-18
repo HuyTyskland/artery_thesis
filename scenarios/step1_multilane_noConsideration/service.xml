@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<services>
+    <service type="NPService">
+        <listener port="8001" />
+        <filters><name pattern="np.*" /></filters>
+    </service>
+    <service type="MService">
+        <listener port="8001" />
+        <filters><name pattern="m.*" /></filters>
+    </service>
+    <service type="PLService">
+        <listener port="8001" />
+        <filters><name pattern="pl" /></filters>
+    </service>
+    <service type="LLService">
+        <listener port="8001" />
+        <filters><name pattern="ll" /></filters>
+    </service>
+</services>
