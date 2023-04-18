@@ -1,5 +1,5 @@
-#ifndef PLSERVICE_H_
-#define PLSERVICE_H_
+#ifndef MSERVICE_H_
+#define MSERVICE_H_
 
 #include "artery/application/ItsG5Service.h"
 #include "vehicle.h"
@@ -7,7 +7,7 @@
 // forward declaration
 namespace traci { class VehicleController; }
 
-class PLService : public artery::ItsG5Service
+class MService : public artery::ItsG5Service
 {
     public:
         void trigger() override;
@@ -16,7 +16,7 @@ class PLService : public artery::ItsG5Service
         void initialize() override;
         void indicate(const vanetza::btp::DataIndication&, omnetpp::cPacket*)
         const traci::VehicleController* mVehicleController = nullptr;
-        vehicle PLInfo;
+        vehicle MInfo;
 };
 
 #endif /* pLSERVICE_H_ */
