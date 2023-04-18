@@ -1,5 +1,5 @@
 #include "LLService.h"
-#include "msgs/V2Vmsg_m.h"
+#include "step1_msgs/V2Vmsg_m.h"
 #include "artery/traci/VehicleController.h"
 #include <vanetza/btp/data_request.hpp>
 #include <vanetza/dcc/profile.hpp>
@@ -15,13 +15,12 @@ void LLService::initialize()
     ItsG5Service::initialize();
     mVehicleController = &getFacilities().get_const<traci::VehicleController>();
     LLInfo.ID = mVehicleController->getVehicleId();
-    LLInfo.lane = mVehicleController->getLaneIndex(LLInfo.ID);
 }
 
 void LLService::trigger()
 {
     Enter_Method("LLService trigger");
-    auto& vehicle_api = mVehicleController->getLiteAPI().vehicle();
+    auto& vehicle_api = mVehicleController->getTraCI()->vehicle;
 
     auto msg = new V2Vmsg();
     msg->setID(LLInfo.ID);
@@ -31,7 +30,7 @@ void LLService::trigger()
 
     btp::DataRequestB req;
     req.destination_port = host_cast<LLService::port_type>(getPortNumber());
-    re.gn.transport_type = geonet::TransportType::SHB;
+    req.gn.transport_type = geonet::TransportType::SHB;
     req.gn.traffic_class.tc_id(static_cast<unsigned>(dcc::Profile::DP0));
     req.gn.communication_profile = geonet::CommunicationProfile::ITS_G5;
     request(req, msg);
@@ -42,8 +41,8 @@ void LLService::indicate(const vanetza::btp::DataIndication& ind, omnetpp::cPack
     Enter_Method("LLService indicate");
     auto msg = check_and_cast<const V2Vmsg*>(packet);
 
-    auto& vehicle_api = mVehicleController->getLiteAPI().vehicle();
-    if (msg->getLane() == LLInfo.Lane && msg->getIsPM() == 1)
+    auto& vehicle_api = mVehicleController->getTraCI()->vehicle;
+    if (msg->getLane() == vehicle_api.getLaneIndex(LLInfo.ID) && msg->getIsPM() == 1)
     {
 
     }

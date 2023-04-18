@@ -1,4 +1,4 @@
-packet InterPlatoonMes
+packet V2Vmsg
 {
     string ID;
     int lane;
