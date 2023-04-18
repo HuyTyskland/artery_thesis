@@ -1,5 +1,6 @@
 packet InterPlatoonMes
 {
-    string platoonID;
-    string receiver;
+    string ID;
+    int lane;
+    int isPM; 
 }
