@@ -23,10 +23,10 @@ void LLService::trigger()
     auto& vehicle_api = mVehicleController->getTraCI()->vehicle;
 
     auto msg = new V2Vmsg();
-    msg->setID(LLInfo.ID);
-    msg->setLane(LLInfo.lane);
+    msg->setID((LLInfo.ID).c_str());
+    msg->setLane(vehicle_api.getLaneIndex(LLInfo.ID));
     msg->setIsPM(1);
-    msg->setbyteLength(40);
+    msg->setByteLength(40);
 
     btp::DataRequestB req;
     req.destination_port = host_cast<LLService::port_type>(getPortNumber());

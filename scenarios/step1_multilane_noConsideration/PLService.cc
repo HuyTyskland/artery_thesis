@@ -15,23 +15,22 @@ void PLService::initialize()
     ItsG5Service::initialize();
     mVehicleController = &getFacilities().get_const<traci::VehicleController>();
     PLInfo.ID = mVehicleController->getVehicleId();
-    PLInfo.lane = mVehicleController->getLaneIndex(PLInfo.ID);
 }
 
 void PLService::trigger()
 {
     Enter_Method("PLService trigger");
-    auto& vehicle_api = mVehicleController->getLiteAPI().vehicle();
+    auto& vehicle_api = mVehicleController->getTraCI()->vehicle;
 
     auto msg = new V2Vmsg();
-    msg->setID(PLInfo.ID);
-    msg->setLane(PLInfo.lane);
+    msg->setID((PLInfo.ID).c_str());
+    msg->setLane(vehicle_api.getLaneIndex(PLInfo.ID));
     msg->setIsPM(1);
     msg->setByteLength(40);
 
     btp::DataRequestB req;
     req.destination_port = host_cast<PLService::port_type>(getPortNumber());
-    re.gn.transport_type = geonet::TransportType::SHB;
+    req.gn.transport_type = geonet::TransportType::SHB;
     req.gn.traffic_class.tc_id(static_cast<unsigned>(dcc::Profile::DP0));
     req.gn.communication_profile = geonet::CommunicationProfile::ITS_G5;
     request(req, msg);
@@ -42,8 +41,8 @@ void PLService::indicate(const vanetza::btp::DataIndication& ind, omnetpp::cPack
     Enter_Method("PLService indicate");
     auto msg = check_and_cast<const V2Vmsg*>(packet);
 
-    auto& vehicle_api = mVehicleController->getLiteAPI().vehicle();
-    if (msg->getLane() == PLInfo.Lane && msg->getIsPM() == 1) // messages from member in the same lane
+    auto& vehicle_api = mVehicleController->getTraCI()->vehicle;
+    if (msg->getLane() == PLInfo.lane && msg->getIsPM() == 1) // messages from member in the same lane
     {
 
     } else {

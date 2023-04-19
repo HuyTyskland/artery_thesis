@@ -14,7 +14,7 @@ class NPService : public artery::ItsG5Service
 
     protected:
         void initialize() override;
-        void indicate(const vanetza::btp::DataIndication&, omnetpp::cPacket*)
+        void indicate(const vanetza::btp::DataIndication&, omnetpp::cPacket*);
         const traci::VehicleController* mVehicleController = nullptr;
         vehicle NPInfo;
 };
