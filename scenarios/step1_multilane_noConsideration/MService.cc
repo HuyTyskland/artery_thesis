@@ -31,7 +31,7 @@ void MService::trigger()
     btp::DataRequestB req;
     req.destination_port = host_cast<MService::port_type>(getPortNumber());
     req.gn.transport_type = geonet::TransportType::SHB;
-    req.gn.traffic_class.tc_id(static_cast<unsigned>(dcc::Profile::DP0));
+    req.gn.traffic_class.tc_id(static_cast<unsigned>(dcc::Profile::DP2));
     req.gn.communication_profile = geonet::CommunicationProfile::ITS_G5;
     request(req, msg);
 }
