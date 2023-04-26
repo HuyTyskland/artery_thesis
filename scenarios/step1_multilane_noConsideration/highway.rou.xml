@@ -13,7 +13,6 @@
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
 <route id="route0" edges="hw0"/>
-<vehicle id="pl" type="artery.inet.Car" route="route0" depart="3" departLane="0" departSpeed="max"/>
 <vehicle id="pl" type="platoonLeader" route="route0" depart="3" departLane="0" departSpeed="max"/>
 <vehicle id="ll" type="laneLeader" route="route0" depart="3" departLane="1" departSpeed="max"/>
 <vehicle id="m1" type="member" route="route0" depart="5" departLane="0" departSpeed="max"/>

@@ -13,7 +13,7 @@
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
     <route id="route0" edges="hw0"/>
-    <vehicle id="np0" type="artery.inet.Car" route="route0" depart="0" departLane="0" departSpeed="max"/>
+    <vehicle id="np0" type="nonPlatoon" route="route0" depart="0" departLane="0" departSpeed="max"/>
     <vehicle id="np1" type="nonPlatoon" route="route0" depart="0" departLane="1" departSpeed="max"/>
     <vehicle id="np2" type="nonPlatoon" route="route0" depart="0.2" departLane="2" departSpeed="max"/>
     <vehicle id="np3" type="nonPlatoon" route="route0" depart="1.2" departLane="2" departSpeed="max"/>
