@@ -26,7 +26,7 @@ void MService::trigger()
     msg->setID((MInfo.ID).c_str());
     msg->setLane(vehicle_api.getLaneIndex(MInfo.ID));
     msg->setIsPM(1);
-    msg->setByteLength(40);
+    msg->setByteLength(2000);
 
     btp::DataRequestB req;
     req.destination_port = host_cast<MService::port_type>(getPortNumber());

@@ -26,7 +26,7 @@ void NPService::trigger()
     msg->setID((NPInfo.ID).c_str());
     msg->setLane(vehicle_api.getLaneIndex(NPInfo.ID));
     msg->setIsPM(0);
-    msg->setByteLength(40);
+    msg->setByteLength(2000);
 
     btp::DataRequestB req;
     req.destination_port = host_cast<NPService::port_type>(getPortNumber());

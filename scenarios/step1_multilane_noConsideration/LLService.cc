@@ -26,7 +26,7 @@ void LLService::trigger()
     msg->setID((LLInfo.ID).c_str());
     msg->setLane(vehicle_api.getLaneIndex(LLInfo.ID));
     msg->setIsPM(1);
-    msg->setByteLength(40);
+    msg->setByteLength(2000);
 
     btp::DataRequestB req;
     req.destination_port = host_cast<LLService::port_type>(getPortNumber());

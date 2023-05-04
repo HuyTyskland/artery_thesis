@@ -26,7 +26,7 @@ void PLService::trigger()
     msg->setID((PLInfo.ID).c_str());
     msg->setLane(vehicle_api.getLaneIndex(PLInfo.ID));
     msg->setIsPM(1);
-    msg->setByteLength(40);
+    msg->setByteLength(2000);
 
     btp::DataRequestB req;
     req.destination_port = host_cast<PLService::port_type>(getPortNumber());
