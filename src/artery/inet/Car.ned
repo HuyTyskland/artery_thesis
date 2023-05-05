@@ -55,7 +55,7 @@ module Car like INetworkNode
                 @display("p=250,300,row,100");
                 macModule = ".wlan[" + string(index) + "].mac";
                 radioModule = ".wlan[" + string(index) + "].radio";
-                @statistic[channel_load](source="ChannelLoad"; record=vector,stats; interpolationmode=none);
+                @statistic[channel_load](source="ChannelLoad"; record=vector,stats);
         }
 
         vanetza[numRadios]: Vanetza {

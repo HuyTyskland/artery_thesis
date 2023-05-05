@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <services>
-    <service type="NPService">
+    <service type="artery.application.CaService">
         <listener port="8001" />
         <filters><name pattern="np.*" /></filters>
     </service>
-    <service type="MService">
+    <service type="artery.application.CaService">
         <listener port="8001" />
         <filters><name pattern="m.*" /></filters>
     </service>
-    <service type="PLService">
+    <service type="artery.application.CaService">
         <listener port="8001" />
         <filters><name pattern="pl" /></filters>
     </service>
-    <service type="LLService">
+    <service type="artery.application.CaService">
         <listener port="8001" />
         <filters><name pattern="ll" /></filters>
     </service>
