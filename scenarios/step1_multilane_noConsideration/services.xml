@@ -2,7 +2,7 @@
 <services>
     <service type="artery.application.CaService">
         <listener port="8001" />
-        <filters><name pattern="np.*" /></filters>
+        <filters><name pattern="type.*" /></filters>
     </service>
     <service type="artery.application.CaService">
         <listener port="8001" />
