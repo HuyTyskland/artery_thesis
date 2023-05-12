@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<routes>
+<vType id="nonPlatoon" vClass="passenger" length="5" maxSpeed="15" speedDev="0.0" color="1,1,1">
+      <param key="vehroute.output.sorted" value="true"/>
+</vType>
+    <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="10" speedDev="0.0" color="1,0,0">
+      <param key="vehroute.output.sorted" value="true"/>
+   </vType>
+    <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="10" speedDev="0.0" color="0,1,0">
+      <param key="vehroute.output.sorted" value="true"/>
+   </vType>
+    <vType id="member" vClass="passenger" length="5" maxSpeed="10" speedDev="0.0" color="0,0,1">
+      <param key="vehroute.output.sorted" value="true"/>
+   </vType>
+<route id="route0" edges="hw0"/>
+
+<flow id="type1" begin="0" end="114" vehsPerHour="14400" type="nonPlatoon" route="route0" departLane="0"/>
+<flow id="type2" begin="0" end="114" vehsPerHour="14400" type="nonPlatoon" route="route0" departLane="1"/>
+<flow id="type3" begin="0" end="114" vehsPerHour="14400" type="nonPlatoon" route="route0" departLane="2"/>
+<flow id="type4" begin="0" end="114" vehsPerHour="14400" type="nonPlatoon" route="route0" departLane="5"/>
+<flow id="type5" begin="0" end="114" vehsPerHour="14400" type="nonPlatoon" route="route0" departLane="6"/>
+<flow id="type6" begin="0" end="114" vehsPerHour="14400" type="nonPlatoon" route="route0" departLane="7"/>
+<vehicle id="pl" type="platoonLeader" route="route0" depart="3" departLane="3" departSpeed="max"/>
+<vehicle id="ll" type="laneLeader" route="route0" depart="3" departLane="4" departSpeed="max"/>
+<vehicle id="m1" type="member" route="route0" depart="5" departLane="3" departSpeed="max"/>
+<vehicle id="m4" type="member" route="route0" depart="5" departLane="4" departSpeed="max"/>
+<vehicle id="m2" type="member" route="route0" depart="7" departLane="3" departSpeed="max"/>
+<vehicle id="m5" type="member" route="route0" depart="7" departLane="4" departSpeed="max"/>
+
+</routes>
+
