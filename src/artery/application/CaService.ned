@@ -29,7 +29,7 @@ simple CaService like ItsG5Service
 
         // generation interval boundaries
         double minInterval @unit(s) = default(0.1s);
-        double maxInterval @unit(s) = default(0.5s);
+        double maxInterval @unit(s) = default(0.2s);
 
         // generate at fixed rate (using minInterval, optionally restricted by DCC)
         bool fixedRate = default(false);
