@@ -34,6 +34,9 @@ static const simsignal_t scSignalCamReceived = cComponent::registerSignal("CamRe
 static const simsignal_t scSignalCamSent = cComponent::registerSignal("CamSent");
 static const auto scLowFrequencyContainerInterval = std::chrono::milliseconds(500);
 
+static const simsignal_t scNumOfSend = cComponent::registerSignal("SNumMesSend");
+static const simsignal_t scNumOfRcv = cComponent::registerSignal("SNumMesRcv");
+
 template<typename T, typename U>
 long round(const boost::units::quantity<T>& q, const U& u)
 {
@@ -114,6 +117,8 @@ void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_pt
 		CaObject obj = visitor.shared_wrapper;
 		emit(scSignalCamReceived, &obj);
 		mLocalDynamicMap->updateAwareness(obj);
+		NumMesRcv = NumMesRcv + 1;
+		emit(scNumOfRcv, NumMesRcv);
 	}
 }
 
@@ -182,6 +187,9 @@ void CaService::sendCam(const SimTime& T_now)
 
 	CaObject obj(std::move(cam));
 	emit(scSignalCamSent, &obj);
+
+	NumMesSent = NumMesSent + 1;
+	emit(scNumOfSend, NumMesSent);
 
 	using CamByteBuffer = convertible::byte_buffer_impl<asn1::Cam>;
 	std::unique_ptr<geonet::DownPacket> payload { new geonet::DownPacket() };
