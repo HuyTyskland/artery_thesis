@@ -118,8 +118,8 @@ void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_pt
 		emit(scSignalCamReceived, &obj);
 		mLocalDynamicMap->updateAwareness(obj);
 		NumMesRcv = NumMesRcv + 1;
-		emit(scNumOfRcv, NumMesRcv);
 	}
+	emit(scNumOfRcv, NumMesRcv);
 }
 
 void CaService::checkTriggeringConditions(const SimTime& T_now)
