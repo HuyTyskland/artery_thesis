@@ -60,6 +60,15 @@ class CaService : public ItsG5BaseService
 		vanetza::units::Velocity mSpeedDelta;
 		bool mDccRestriction;
 		bool mFixedRate;
+
+		//huy statistics
+		long NumCamSent = 0; //Number of Cam a vehicle send
+		long NumRcvFrPL = 0; //number of Cam a vehicle receive from PL
+		long NumRcvFrLL = 0; //number of Cam a vehicle receive from LL
+		long NumRcvFrM1 = 0; //number of Cam a vehicle receive from M1
+		long NumRcvFrM2 = 0; //number of Cam a vehicle receive from M2
+		long NumRcvFrM3 = 0; //number of Cam a vehicle receive from M3
+		long NumRcvFrM4 = 0; //number of Cam a vehicle receive from M4
 };
 
 vanetza::asn1::Cam createCooperativeAwarenessMessage(const VehicleDataProvider&, uint16_t genDeltaTime);

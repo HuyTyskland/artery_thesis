@@ -24,6 +24,23 @@ simple CaService like ItsG5Service
         @statistic[reception](source=CamReceived;record=vector(camStationId)?,vector(camGenerationDeltaTime)?);
         @statistic[transmission](source=CamSent;record=vector(camStationId)?,vector(camGenerationDeltaTime)?);
 
+        //huy's signal
+        @signal[SNumCamSent](type=long);
+        @signal[SNumCamRcvFrPL](type=long);
+        @signal[SNumCamRcvFrLL](type=long);
+        @signal[SNumCamRcvFrM1](type=long);
+        @signal[SNumCamRcvFrM2](type=long);
+        @signal[SNumCamRcvFrM3](type=long);
+        @signal[SNumCamRcvFrM4](type=long);
+
+        @statistic[NumSent](source=SNumCamSent;record=vector);
+        @statistic[NumRcvPL](source=SNumCamRcvFrPL;record=vector);
+        @statistic[NumRcvLL](source=SNumCamRcvFrLL;record=vector);
+        @statistic[NumRcvM1](source=SNumCamRcvFrM1;record=vector);
+        @statistic[NumRcvM2](source=SNumCamRcvFrM2;record=vector);
+        @statistic[NumRcvM3](source=SNumCamRcvFrM3;record=vector);
+        @statistic[NumRcvM4](source=SNumCamRcvFrM4;record=vector);
+
         // evaluate DCC transmission interval restrictions
         bool withDccRestriction = default(true);
 

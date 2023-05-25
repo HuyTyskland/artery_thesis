@@ -19,6 +19,7 @@
 #include <vanetza/dcc/transmit_rate_control.hpp>
 #include <vanetza/facilities/cam_functions.hpp>
 #include <chrono>
+#include <string>
 
 namespace artery
 {
@@ -33,6 +34,15 @@ auto centimeter_per_second = vanetza::units::si::meter_per_second * boost::units
 static const simsignal_t scSignalCamReceived = cComponent::registerSignal("CamReceived");
 static const simsignal_t scSignalCamSent = cComponent::registerSignal("CamSent");
 static const auto scLowFrequencyContainerInterval = std::chrono::milliseconds(500);
+
+//huy's signal
+static const simsignal_t scSignalNumCamSent = cComponent::registerSignal("SNumCamSent");
+static const simsignal_t scSignalNumCamRcvFrPL = cComponent::registerSignal("SNumCamRcvFrPL");
+static const simsignal_t scSignalNumCamRcvFrLL = cComponent::registerSignal("SNumCamRcvFrLL");
+static const simsignal_t scSignalNumCamRcvFrM1 = cComponent::registerSignal("SNumCamRcvFrM1");
+static const simsignal_t scSignalNumCamRcvFrM2 = cComponent::registerSignal("SNumCamRcvFrM2");
+static const simsignal_t scSignalNumCamRcvFrM3 = cComponent::registerSignal("SNumCamRcvFrM3");
+static const simsignal_t scSignalNumCamRcvFrM4 = cComponent::registerSignal("SNumCamRcvFrM4");
 
 template<typename T, typename U>
 long round(const boost::units::quantity<T>& q, const U& u)
@@ -55,6 +65,40 @@ SpeedValue_t buildSpeedValue(const vanetza::units::Velocity& v)
 	return speed;
 }
 
+//huy's function: indentify whose message is it and emit corresponding signal
+void emitCorrespondingSignal(const CaObject obj)
+{
+	if (obj.asn1()->header.stationID == "pl")
+	{
+		NumRcvFrPL = NumRcvFrPL + 1;
+		emit(scSignalNumCamRcvFrPL, NumRcvFrPL);
+	}
+	if (obj.asn1()->header.stationID == "ll")
+	{
+		NumRcvFrLL = NumRcvFrLL + 1;
+		emit(scSignalNumCamRcvFrLL, NumRcvFrLL);
+	}
+	if (obj.asn1()->header.stationID == "m1")
+	{
+		NumRcvFrM1 = NumRcvFrM1 + 1;
+		emit(scSignalNumCamRcvFrM1, NumRcvFrM1);
+	}
+	if (obj.asn1()->header.stationID == "m2")
+	{
+		NumRcvFrM2 = NumRcvFrM2 + 1;
+		emit(scSignalNumCamRcvFrM2, NumRcvFrM2);
+	}
+	if (obj.asn1()->header.stationID == "m3")
+	{
+		NumRcvFrM3 = NumRcvFrM3 + 1;
+		emit(scSignalNumCamRcvFrM3, NumRcvFrM3);
+	}
+	if (obj.asn1()->header.stationID == "m4")
+	{
+		NumRcvFrM4 = NumRcvFrM4 + 1;
+		emit(scSignalNumCamRcvFrM4, NumRcvFrM4);
+	}
+}
 
 Define_Module(CaService)
 
@@ -114,6 +158,7 @@ void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_pt
 		CaObject obj = visitor.shared_wrapper;
 		emit(scSignalCamReceived, &obj);
 		mLocalDynamicMap->updateAwareness(obj);
+		emitCorrespondingSignal(obj);
 	}
 }
 
@@ -182,6 +227,10 @@ void CaService::sendCam(const SimTime& T_now)
 
 	CaObject obj(std::move(cam));
 	emit(scSignalCamSent, &obj);
+
+	//Huy's emitting signal "send signal"
+	NumMesSent = NumMesSent + 1;
+	emit(scSignalNumCamSent, NumMesSent);
 
 	using CamByteBuffer = convertible::byte_buffer_impl<asn1::Cam>;
 	std::unique_ptr<geonet::DownPacket> payload { new geonet::DownPacket() };
