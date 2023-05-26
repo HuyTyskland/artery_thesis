@@ -37,6 +37,7 @@ class CaService : public ItsG5BaseService
 		bool checkPositionDelta() const;
 		bool checkSpeedDelta() const;
 		void sendCam(const omnetpp::SimTime&);
+		void emitCorrespondingSignal(const CaObject);
 		omnetpp::SimTime genCamDcc();
 
 		ChannelNumber mPrimaryChannel = channel::CCH;

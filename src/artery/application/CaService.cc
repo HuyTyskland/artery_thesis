@@ -65,41 +65,6 @@ SpeedValue_t buildSpeedValue(const vanetza::units::Velocity& v)
 	return speed;
 }
 
-//huy's function: indentify whose message is it and emit corresponding signal
-void emitCorrespondingSignal(const CaObject obj)
-{
-	if (obj.asn1()->header.stationID == "pl")
-	{
-		NumRcvFrPL = NumRcvFrPL + 1;
-		emit(scSignalNumCamRcvFrPL, NumRcvFrPL);
-	}
-	if (obj.asn1()->header.stationID == "ll")
-	{
-		NumRcvFrLL = NumRcvFrLL + 1;
-		emit(scSignalNumCamRcvFrLL, NumRcvFrLL);
-	}
-	if (obj.asn1()->header.stationID == "m1")
-	{
-		NumRcvFrM1 = NumRcvFrM1 + 1;
-		emit(scSignalNumCamRcvFrM1, NumRcvFrM1);
-	}
-	if (obj.asn1()->header.stationID == "m2")
-	{
-		NumRcvFrM2 = NumRcvFrM2 + 1;
-		emit(scSignalNumCamRcvFrM2, NumRcvFrM2);
-	}
-	if (obj.asn1()->header.stationID == "m3")
-	{
-		NumRcvFrM3 = NumRcvFrM3 + 1;
-		emit(scSignalNumCamRcvFrM3, NumRcvFrM3);
-	}
-	if (obj.asn1()->header.stationID == "m4")
-	{
-		NumRcvFrM4 = NumRcvFrM4 + 1;
-		emit(scSignalNumCamRcvFrM4, NumRcvFrM4);
-	}
-}
-
 Define_Module(CaService)
 
 CaService::CaService() :
@@ -146,6 +111,41 @@ void CaService::trigger()
 {
 	Enter_Method("trigger");
 	checkTriggeringConditions(simTime());
+}
+
+//huy's function: indentify whose message is it and emit corresponding signal
+void CaService::emitCorrespondingSignal(const CaObject obj)
+{
+	if (obj.asn1()->header.stationID == 16)
+	{
+		NumRcvFrPL = NumRcvFrPL + 1;
+		emit(scSignalNumCamRcvFrPL, NumRcvFrPL);
+	}
+	if (obj.asn1()->header.stationID == 86)
+	{
+		NumRcvFrLL = NumRcvFrLL + 1;
+		emit(scSignalNumCamRcvFrLL, NumRcvFrLL);
+	}
+	if (obj.asn1()->header.stationID == 156)
+	{
+		NumRcvFrM1 = NumRcvFrM1 + 1;
+		emit(scSignalNumCamRcvFrM1, NumRcvFrM1);
+	}
+	if (obj.asn1()->header.stationID == 296)
+	{
+		NumRcvFrM2 = NumRcvFrM2 + 1;
+		emit(scSignalNumCamRcvFrM2, NumRcvFrM2);
+	}
+	if (obj.asn1()->header.stationID == 366)
+	{
+		NumRcvFrM3 = NumRcvFrM3 + 1;
+		emit(scSignalNumCamRcvFrM3, NumRcvFrM3);
+	}
+	if (obj.asn1()->header.stationID == 226)
+	{
+		NumRcvFrM4 = NumRcvFrM4 + 1;
+		emit(scSignalNumCamRcvFrM4, NumRcvFrM4);
+	}
 }
 
 void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_ptr<vanetza::UpPacket> packet)
@@ -229,8 +229,8 @@ void CaService::sendCam(const SimTime& T_now)
 	emit(scSignalCamSent, &obj);
 
 	//Huy's emitting signal "send signal"
-	NumMesSent = NumMesSent + 1;
-	emit(scSignalNumCamSent, NumMesSent);
+	NumCamSent = NumCamSent + 1;
+	emit(scSignalNumCamSent, NumCamSent);
 
 	using CamByteBuffer = convertible::byte_buffer_impl<asn1::Cam>;
 	std::unique_ptr<geonet::DownPacket> payload { new geonet::DownPacket() };
