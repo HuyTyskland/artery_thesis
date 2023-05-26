@@ -21,6 +21,13 @@
 #include <chrono>
 #include <string>
 
+#define PLId 16
+#define LLId 86
+#define M1Id 156
+#define M2Id 296
+#define M3Id 366
+#define M4Id 226
+
 namespace artery
 {
 
@@ -116,32 +123,32 @@ void CaService::trigger()
 //huy's function: indentify whose message is it and emit corresponding signal
 void CaService::emitCorrespondingSignal(const CaObject obj)
 {
-	if (obj.asn1()->header.stationID == 16)
+	if (obj.asn1()->header.stationID == PLId)
 	{
 		NumRcvFrPL = NumRcvFrPL + 1;
 		emit(scSignalNumCamRcvFrPL, NumRcvFrPL);
 	}
-	if (obj.asn1()->header.stationID == 86)
+	if (obj.asn1()->header.stationID == LLId)
 	{
 		NumRcvFrLL = NumRcvFrLL + 1;
 		emit(scSignalNumCamRcvFrLL, NumRcvFrLL);
 	}
-	if (obj.asn1()->header.stationID == 156)
+	if (obj.asn1()->header.stationID == M1Id)
 	{
 		NumRcvFrM1 = NumRcvFrM1 + 1;
 		emit(scSignalNumCamRcvFrM1, NumRcvFrM1);
 	}
-	if (obj.asn1()->header.stationID == 296)
+	if (obj.asn1()->header.stationID == M2Id)
 	{
 		NumRcvFrM2 = NumRcvFrM2 + 1;
 		emit(scSignalNumCamRcvFrM2, NumRcvFrM2);
 	}
-	if (obj.asn1()->header.stationID == 366)
+	if (obj.asn1()->header.stationID == M3Id)
 	{
 		NumRcvFrM3 = NumRcvFrM3 + 1;
 		emit(scSignalNumCamRcvFrM3, NumRcvFrM3);
 	}
-	if (obj.asn1()->header.stationID == 226)
+	if (obj.asn1()->header.stationID == M4Id)
 	{
 		NumRcvFrM4 = NumRcvFrM4 + 1;
 		emit(scSignalNumCamRcvFrM4, NumRcvFrM4);
