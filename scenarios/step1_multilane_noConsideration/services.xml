@@ -2,7 +2,7 @@
 <services>
     <service type="artery.application.CaService">
         <listener port="2001" />
-        <filters><name pattern="type.*" /></filters>
+        <filters><name pattern="nonplatoon*" /></filters>
     </service>
     <service type="artery.application.CaService">
         <listener port="2001" />
