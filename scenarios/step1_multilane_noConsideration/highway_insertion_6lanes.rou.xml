@@ -17,9 +17,9 @@
 <vehicle id="pl" type="platoonLeader" route="route0" depart="7" departLane="2" departSpeed="max"/>
 <vehicle id="ll" type="laneLeader" route="route0" depart="7" departLane="3" departSpeed="max"/>
 <vehicle id="m1" type="member" route="route0" depart="9" departLane="2" departSpeed="max"/>
-<vehicle id="m4" type="member" route="route0" depart="9" departLane="3" departSpeed="max"/>
+<vehicle id="m3" type="member" route="route0" depart="9" departLane="3" departSpeed="max"/>
 <vehicle id="m2" type="member" route="route0" depart="11" departLane="2" departSpeed="max"/>
-<vehicle id="m5" type="member" route="route0" depart="11" departLane="3" departSpeed="max"/>
+<vehicle id="m4" type="member" route="route0" depart="11" departLane="3" departSpeed="max"/>
 
 </routes>
 
