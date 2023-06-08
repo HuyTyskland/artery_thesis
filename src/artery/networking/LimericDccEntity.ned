@@ -11,7 +11,7 @@ simple LimericDccEntity like IDccEntity
         string ChannelProbeProcessor = default("Local");
         string NetworkEntity = default("");
 
-        double targetCbr = default(0.68);
+        double targetCbr = default(0.6);
         int queueLength = default(2);
         bool enableDualAlpha = default(false);
 

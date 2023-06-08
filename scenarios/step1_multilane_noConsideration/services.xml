@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <services>
     <service type="artery.application.CaService">
-        <listener port="8001" />
+        <listener port="2001" />
         <filters><name pattern="type.*" /></filters>
     </service>
     <service type="artery.application.CaService">
-        <listener port="8001" />
+        <listener port="2001" />
         <filters><name pattern="m.*" /></filters>
     </service>
     <service type="artery.application.CaService">
-        <listener port="8001" />
+        <listener port="2001" />
         <filters><name pattern="pl" /></filters>
     </service>
     <service type="artery.application.CaService">
-        <listener port="8001" />
+        <listener port="2001" />
         <filters><name pattern="ll" /></filters>
     </service>
 </services>
