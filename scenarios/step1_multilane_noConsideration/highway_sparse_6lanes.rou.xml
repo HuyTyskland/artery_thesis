@@ -3,21 +3,21 @@
     <vType id="nonPlatoon" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="1,1,1">
       <param key="vehroute.output.sorted" value="true"/>
 </vType>
-    <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="1,0,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
+    <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="8" speedDev="0.0" color="1,0,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
-    <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="0,1,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
+    <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="8" speedDev="0.0" color="0,1,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
-    <vType id="member" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="0,0,1" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
+    <vType id="member" vClass="passenger" length="5" maxSpeed="8" speedDev="0.0" color="0,0,1" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
     <route id="route0" edges="hw0"/>
-    <vehicle id="pl_a1" type="platoonLeader" route="route0" depart="0" departLane="0" departSpeed="max"/>
-    <vehicle id="ll_a1" type="laneLeader" route="route0" depart="0" departLane="1" departSpeed="max"/>
-    <vehicle id="pl_c1" type="platoonLeader" route="route0" depart="0" departLane="4" departSpeed="max"/>
-    <vehicle id="ll_c1" type="laneLeader" route="route0" depart="0" departLane="5" departSpeed="max"/>
-    <vehicle id="m1_a1" type="member" route="route0" depart="2" departLane="0" departSpeed="max"/>
+    <vehicle id="pl_a1" type="platoonLeader" route="route0" depart="0" departLane="0" departSpeed="max"/> <!--[0]-->
+    <vehicle id="ll_a1" type="laneLeader" route="route0" depart="0" departLane="1" departSpeed="max"/> <!--[1]-->
+    <vehicle id="pl_c1" type="platoonLeader" route="route0" depart="0" departLane="4" departSpeed="max"/> <!--[2]-->
+    <vehicle id="ll_c1" type="laneLeader" route="route0" depart="0" departLane="5" departSpeed="max"/> <!--[3]-->
+    <vehicle id="m1_a1" type="member" route="route0" depart="2" departLane="0" departSpeed="max"/> <!--and so on...-->
     <vehicle id="m3_a1" type="member" route="route0" depart="2" departLane="1" departSpeed="max"/>
     <vehicle id="m1_c1" type="member" route="route0" depart="2" departLane="4" departSpeed="max"/>
     <vehicle id="m3_c1" type="member" route="route0" depart="2" departLane="5" departSpeed="max"/>

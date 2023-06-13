@@ -21,12 +21,12 @@
 #include <chrono>
 #include <string>
 
-#define PLId 16
-#define LLId 86
-#define M1Id 156
-#define M2Id 296
-#define M3Id 226
-#define M4Id 366
+#define PLId 4636 //66
+#define LLId 4706 //67
+#define M1Id 4776 //68
+#define M2Id 4916 //70
+#define M3Id 4846 //69
+#define M4Id 4986 //71
 
 namespace artery
 {
@@ -50,6 +50,14 @@ static const simsignal_t scSignalNumCamRcvFrM1 = cComponent::registerSignal("SNu
 static const simsignal_t scSignalNumCamRcvFrM2 = cComponent::registerSignal("SNumCamRcvFrM2");
 static const simsignal_t scSignalNumCamRcvFrM3 = cComponent::registerSignal("SNumCamRcvFrM3");
 static const simsignal_t scSignalNumCamRcvFrM4 = cComponent::registerSignal("SNumCamRcvFrM4");
+
+//huy's signal
+static const simsignal_t scSignalTsFrPL = cComponent::registerSignal("STsFrPL");
+static const simsignal_t scSignalTsFrLL = cComponent::registerSignal("STsFrLL");
+static const simsignal_t scSignalTsFrM1 = cComponent::registerSignal("STsFrM1");
+static const simsignal_t scSignalTsFrM2 = cComponent::registerSignal("STsFrM2");
+static const simsignal_t scSignalTsFrM3 = cComponent::registerSignal("STsFrM3");
+static const simsignal_t scSignalTsFrM4 = cComponent::registerSignal("STsFrM4");
 
 template<typename T, typename U>
 long round(const boost::units::quantity<T>& q, const U& u)
@@ -155,6 +163,61 @@ void CaService::emitCorrespondingSignal(const CaObject obj)
 	}
 }
 
+//huy's function: emit the inter-message time - time period between 2 received messages
+void CaService::emitTimeReceived(const CaObject obj)
+{
+	const SimTime& T_now  = simTime();
+	int64_t timeLength = 0;
+	if (obj.asn1()->header.stationID == PLId)
+	{
+		const SimTime timePeriodPL = T_now - lastPLTime;
+		timeLength = timePeriodPL.inUnit(SIMTIME_US);
+		if (lastPLTime != 0)
+			emit(scSignalTsFrPL, timeLength);
+		lastPLTime = T_now;
+	}
+	if (obj.asn1()->header.stationID == LLId)
+	{
+		const SimTime timePeriodLL = T_now - lastLLTime;
+		timeLength = timePeriodLL.inUnit(SIMTIME_US);
+		if (lastLLTime != 0)
+			emit(scSignalTsFrLL, timeLength);
+		lastLLTime = T_now;
+	}
+	if (obj.asn1()->header.stationID == M1Id)
+	{
+		const SimTime timePeriodM1 = T_now - lastM1Time;
+		timeLength = timePeriodM1.inUnit(SIMTIME_US);
+		if (lastM1Time != 0)
+			emit(scSignalTsFrM1, timeLength);
+		lastM1Time = T_now;
+	}
+	if (obj.asn1()->header.stationID == M2Id)
+	{
+		const SimTime timePeriodM2 = T_now - lastM2Time;
+		timeLength = timePeriodM2.inUnit(SIMTIME_US);
+		if (lastM2Time != 0)
+			emit(scSignalTsFrM2, timeLength);
+		lastM2Time = T_now;
+	}
+	if (obj.asn1()->header.stationID == M3Id)
+	{
+		const SimTime timePeriodM3 = T_now - lastM3Time;
+		timeLength = timePeriodM3.inUnit(SIMTIME_US);
+		if (lastM3Time != 0)
+			emit(scSignalTsFrM3, timeLength);
+		lastM3Time = T_now;
+	}
+	if (obj.asn1()->header.stationID == M4Id)
+	{
+		const SimTime timePeriodM4 = T_now - lastM4Time;
+		timeLength = timePeriodM4.inUnit(SIMTIME_US);
+		if (lastM4Time != 0)
+			emit(scSignalTsFrM4, timeLength);
+		lastM4Time = T_now;
+	}
+}
+
 void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_ptr<vanetza::UpPacket> packet)
 {
 	Enter_Method("indicate");
@@ -166,6 +229,7 @@ void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_pt
 		emit(scSignalCamReceived, &obj);
 		mLocalDynamicMap->updateAwareness(obj);
 		emitCorrespondingSignal(obj);
+		emitTimeReceived(obj);
 	}
 }
 

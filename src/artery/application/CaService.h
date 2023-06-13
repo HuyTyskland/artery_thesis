@@ -38,6 +38,7 @@ class CaService : public ItsG5BaseService
 		bool checkSpeedDelta() const;
 		void sendCam(const omnetpp::SimTime&);
 		void emitCorrespondingSignal(const CaObject);
+		void emitTimeReceived(const CaObject);
 		omnetpp::SimTime genCamDcc();
 
 		ChannelNumber mPrimaryChannel = channel::CCH;
@@ -70,6 +71,14 @@ class CaService : public ItsG5BaseService
 		long NumRcvFrM2 = 0; //number of Cam a vehicle receive from M2
 		long NumRcvFrM3 = 0; //number of Cam a vehicle receive from M3
 		long NumRcvFrM4 = 0; //number of Cam a vehicle receive from M4
+
+		//Huy time statistic
+		omnetpp::SimTime lastPLTime = 0; // timestamp of the last received message from PL
+		omnetpp::SimTime lastLLTime = 0; // timestamp of the last received message from LL
+		omnetpp::SimTime lastM1Time = 0; // timestamp of the last received message from M1
+		omnetpp::SimTime lastM2Time = 0; // timestamp of the last received message from M2
+		omnetpp::SimTime lastM3Time = 0; // timestamp of the last received message from M3
+		omnetpp::SimTime lastM4Time = 0; // timestamp of the last received message from M4
 };
 
 vanetza::asn1::Cam createCooperativeAwarenessMessage(const VehicleDataProvider&, uint16_t genDeltaTime);

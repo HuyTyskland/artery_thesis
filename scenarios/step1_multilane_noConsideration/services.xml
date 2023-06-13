@@ -6,17 +6,14 @@
     </service>
     <service type="artery.application.CaService">
         <listener port="2001" />
-        <listener port="2001" />
         <filters><name pattern="m.*" /></filters>
     </service>
     <service type="artery.application.CaService">
         <listener port="2001" />
-        <listener port="2001" />
-        <filters><name pattern="pl" /></filters>
+        <filters><name pattern="pl.*" /></filters>
     </service>
     <service type="artery.application.CaService">
         <listener port="2001" />
-        <listener port="2001" />
-        <filters><name pattern="ll" /></filters>
+        <filters><name pattern="ll.*" /></filters>
     </service>
 </services>

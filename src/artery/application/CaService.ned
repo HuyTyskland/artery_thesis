@@ -41,12 +41,27 @@ simple CaService like ItsG5Service
         @statistic[NumRcvM3](source=SNumCamRcvFrM3;record=vector);
         @statistic[NumRcvM4](source=SNumCamRcvFrM4;record=vector);
 
+        //huy's signal time record
+        @signal[STsFrPL](type=long);
+        @signal[STsFrLL](type=long);
+        @signal[STsFrM1](type=long);
+        @signal[STsFrM2](type=long);
+        @signal[STsFrM3](type=long);
+        @signal[STsFrM4](type=long);
+
+        @statistic[TimeLapsePL](source=STsFrPL;record=vector);
+        @statistic[TimeLapseLL](source=STsFrLL;record=vector);
+        @statistic[TimeLapseM1](source=STsFrM1;record=vector);
+        @statistic[TimeLapseM2](source=STsFrM2;record=vector);
+        @statistic[TimeLapseM3](source=STsFrM3;record=vector);
+        @statistic[TimeLapseM4](source=STsFrM4;record=vector);
+
         // evaluate DCC transmission interval restrictions
         bool withDccRestriction = default(true);
 
         // generation interval boundaries
         double minInterval @unit(s) = default(0.1s);
-        double maxInterval @unit(s) = default(0.2s);
+        double maxInterval @unit(s) = default(1s);
 
         // generate at fixed rate (using minInterval, optionally restricted by DCC)
         bool fixedRate = default(false);
