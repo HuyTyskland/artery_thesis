@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <routes>
-<vType id="nonPlatoon" vClass="passenger" length="5" maxSpeed="8" speedDev="0.0" color="1,1,1">
+<vType id="nonPlatoon" vClass="passenger" length="5" maxSpeed="7" speedDev="0.0" color="1,1,1" >
       <param key="vehroute.output.sorted" value="true"/>
 </vType>
-    <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="1,0,0">
+    <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="5.5" speedDev="0.0" color="1,0,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
-    <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="0,1,0">
+    <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="5.5" speedDev="0.0" color="0,1,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
-    <vType id="member" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="0,0,1">
+    <vType id="member" vClass="passenger" length="5" maxSpeed="5.5" speedDev="0.0" color="0,0,1" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
       <param key="vehroute.output.sorted" value="true"/>
    </vType>
 <route id="route0" edges="hw0"/>
 
-<!--
+
 <vehicle id="nonplatoon" type="nonPlatoon" route="route0" depart="0" departLane="2" departSpeed="max"/>
--->
+
 <vehicle id="pl" type="platoonLeader" route="route0" depart="9" departLane="2" departSpeed="max"/>
 <vehicle id="ll" type="laneLeader" route="route0" depart="9" departLane="3" departSpeed="max"/>
 <vehicle id="m1" type="member" route="route0" depart="11" departLane="2" departSpeed="max"/>
