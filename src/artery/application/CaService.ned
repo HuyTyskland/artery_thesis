@@ -56,6 +56,11 @@ simple CaService like ItsG5Service
         @statistic[TimeLapseM3](source=STsFrM3;record=vector);
         @statistic[TimeLapseM4](source=STsFrM4;record=vector);
 
+        //huy's signal time record
+        @signal[SRcvCAMGenTime](type=long);
+
+        @statistic[RcvCAMGenTime](source=SRcvCAMGenTime;record=vector);
+
         // evaluate DCC transmission interval restrictions
         bool withDccRestriction = default(true);
 

@@ -59,6 +59,9 @@ static const simsignal_t scSignalTsFrM2 = cComponent::registerSignal("STsFrM2");
 static const simsignal_t scSignalTsFrM3 = cComponent::registerSignal("STsFrM3");
 static const simsignal_t scSignalTsFrM4 = cComponent::registerSignal("STsFrM4");
 
+//huy's signal
+static const simsignal_t scRcvCAMGenTime = cComponent::registerSignal("SRcvCAMGenTime");
+
 template<typename T, typename U>
 long round(const boost::units::quantity<T>& q, const U& u)
 {
@@ -230,6 +233,7 @@ void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_pt
 		mLocalDynamicMap->updateAwareness(obj);
 		emitCorrespondingSignal(obj);
 		emitTimeReceived(obj);
+		emit(scRcvCAMGenTime, simTime().inUnit(SIMTIME_MS) - obj.asn1()->cam.generationDeltaTime);
 	}
 }
 
@@ -275,7 +279,7 @@ bool CaService::checkSpeedDelta() const
 
 void CaService::sendCam(const SimTime& T_now)
 {
-	uint16_t genDeltaTimeMod = countTaiMilliseconds(mTimer->getTimeFor(mVehicleDataProvider->updated()));
+	uint16_t genDeltaTimeMod = countTaiMilliseconds(mTimer->getCurrentTime());
 	auto cam = createCooperativeAwarenessMessage(*mVehicleDataProvider, genDeltaTimeMod);
 
 	mLastCamPosition = mVehicleDataProvider->position();
