@@ -64,7 +64,7 @@ simple CaService like ItsG5Service
         double maxInterval @unit(s) = default(1s);
 
         // generate at fixed rate (using minInterval, optionally restricted by DCC)
-        bool fixedRate = default(false);
+        bool fixedRate = default(true);
 
         // change in orientation triggering CAM generation (in degree)
         double headingDelta = default(4.0);
