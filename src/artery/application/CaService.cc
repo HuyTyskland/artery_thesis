@@ -59,6 +59,9 @@ static const simsignal_t scSignalTsFrM2 = cComponent::registerSignal("STsFrM2");
 static const simsignal_t scSignalTsFrM3 = cComponent::registerSignal("STsFrM3");
 static const simsignal_t scSignalTsFrM4 = cComponent::registerSignal("STsFrM4");
 
+//huy's signal
+static const simsignal_t scRcvCAMGenTime = cComponent::registerSignal("SRcvCAMGenTime");
+
 template<typename T, typename U>
 long round(const boost::units::quantity<T>& q, const U& u)
 {
@@ -230,6 +233,15 @@ void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_pt
 		mLocalDynamicMap->updateAwareness(obj);
 		emitCorrespondingSignal(obj);
 		emitTimeReceived(obj);
+
+		if (obj.asn1()->header.stationID == LLId)
+		{
+			//uint16_t dataAge = (uint16_t)countTaiMilliseconds(mTimer->getCurrentTime()) - (uint16_t)obj.asn1()->cam.generationDeltaTime;
+			uint16_t currentTaiTime = countTaiMilliseconds(mTimer->getCurrentTime());
+			uint16_t dataAge = currentTaiTime - obj.asn1()->cam.generationDeltaTime;
+			emit(scRcvCAMGenTime, dataAge);
+	
+		}
 	}
 }
 
