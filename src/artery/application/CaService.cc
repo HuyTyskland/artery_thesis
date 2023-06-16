@@ -240,7 +240,6 @@ void CaService::indicate(const vanetza::btp::DataIndication& ind, std::unique_pt
 			uint16_t currentTaiTime = countTaiMilliseconds(mTimer->getCurrentTime());
 			uint16_t dataAge = currentTaiTime - obj.asn1()->cam.generationDeltaTime;
 			emit(scRcvCAMGenTime, dataAge);
-	
 		}
 	}
 }
@@ -288,6 +287,7 @@ bool CaService::checkSpeedDelta() const
 void CaService::sendCam(const SimTime& T_now)
 {
 	uint16_t genDeltaTimeMod = countTaiMilliseconds(mTimer->getTimeFor(mVehicleDataProvider->updated()));
+	//uint16_t genDeltaTimeMod = countTaiMilliseconds(mTimer->getCurrentTime());
 	auto cam = createCooperativeAwarenessMessage(*mVehicleDataProvider, genDeltaTimeMod);
 
 	mLastCamPosition = mVehicleDataProvider->position();
