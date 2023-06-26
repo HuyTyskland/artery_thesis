@@ -81,4 +81,7 @@ simple CaService like ItsG5Service
 
         // length of path history
         volatile int pathHistoryLength = default(23);
+
+        //Huy's code: Message priority
+        bool isLowPriority = default(true);
 }

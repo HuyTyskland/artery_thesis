@@ -62,6 +62,7 @@ class CaService : public ItsG5BaseService
 		vanetza::units::Velocity mSpeedDelta;
 		bool mDccRestriction;
 		bool mFixedRate;
+		bool mIsLowPriority;
 
 		//huy statistics
 		long NumCamSent = 0; //Number of Cam a vehicle send

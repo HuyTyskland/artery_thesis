@@ -123,6 +123,9 @@ void CaService::initialize()
 
 	// look up primary channel for CA
 	mPrimaryChannel = getFacilities().get_const<MultiChannelPolicy>().primaryChannel(vanetza::aid::CA);
+
+	//Huy's code: message priority
+	mIsLowPriority = par("isLowPriority");
 }
 
 void CaService::trigger()
@@ -305,7 +308,13 @@ void CaService::sendCam(const SimTime& T_now)
 	request.gn.its_aid = aid::CA;
 	request.gn.transport_type = geonet::TransportType::SHB;
 	request.gn.maximum_lifetime = geonet::Lifetime { geonet::Lifetime::Base::One_Second, 1 };
-	request.gn.traffic_class.tc_id(static_cast<unsigned>(dcc::Profile::DP2));
+	if (mIsLowPriority)
+	{
+		request.gn.traffic_class.tc_id(static_cast<unsigned>(dcc::Profile::DP3));
+	} else 
+	{
+		request.gn.traffic_class.tc_id(static_cast<unsigned>(dcc::Profile::DP2));
+	}
 	request.gn.communication_profile = geonet::CommunicationProfile::ITS_G5;
 
 	CaObject obj(std::move(cam));
