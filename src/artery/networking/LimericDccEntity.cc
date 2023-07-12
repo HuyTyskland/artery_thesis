@@ -32,6 +32,13 @@ void LimericDccEntity::initializeTransmitRateControl()
     Limeric::Parameters params;
     params.cbr_target = mTargetCbr;
 
+    using namespace vanetza;
+    //Huy's parameter: alpha and beta
+    UnitInterval alpha(par("adaptedAlpha"));
+    params.alpha = alpha;
+    UnitInterval beta(par("adaptedBeta"));
+    params.beta = beta;
+
     mAlgorithm.reset(new Limeric(*mRuntime, params));
     if (par("enableDualAlpha")) {
         Limeric::DualAlphaParameters dual_params;

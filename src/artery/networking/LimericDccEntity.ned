@@ -15,6 +15,10 @@ simple LimericDccEntity like IDccEntity
         int queueLength = default(2);
         bool enableDualAlpha = default(false);
 
+        //Huy's alpha and beta variable
+        double adaptedAlpha = default(0.016);
+        double adaptedBeta = default(0.0012);
+
     gates:
         output radioDriverData;
 }
