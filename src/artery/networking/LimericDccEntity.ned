@@ -19,6 +19,10 @@ simple LimericDccEntity like IDccEntity
         double adaptedAlpha = default(0.016);
         double adaptedBeta = default(0.0012);
 
+        //Huy's signal
+        @signal[averageCBR](type=double);
+        @statistic[avgCBR](source=averageCBR; record=vector);
+
     gates:
         output radioDriverData;
 }

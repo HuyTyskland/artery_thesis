@@ -3,6 +3,9 @@
 
 namespace artery
 {
+using namespace omnetpp;
+//Huy's signal
+const simsignal_t scAverageCBR = cComponent::registerSignal("averageCBR");
 
 Define_Module(LimericDccEntity)
 
@@ -55,6 +58,7 @@ void LimericDccEntity::onGlobalCbr(vanetza::dcc::ChannelLoad cbr)
 {
     ASSERT(mAlgorithm);
     mAlgorithm->update_cbr(cbr);
+    emit(scAverageCBR, (mAlgorithm->average_cbr()).value());
 }
 
 } // namespace arterd
