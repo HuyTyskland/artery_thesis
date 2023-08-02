@@ -42,6 +42,9 @@ Define_Module(Router)
 static const omnetpp::simsignal_t scPositionFixSignal = omnetpp::cComponent::registerSignal("PositionFix");
 static const omnetpp::simsignal_t scLinkReceptionSignal = omnetpp::cComponent::registerSignal("LinkReception");
 
+//Huy's signal
+const simsignal_t  Router::scVehCount = omnetpp::cComponent::registerSignal("VehCount");
+
 int Router::numInitStages() const
 {
     return InitStages::Total;
@@ -121,6 +124,13 @@ void Router::handleMessage(omnetpp::cMessage* msg)
     } else {
         error("Do not know how to handle received message");
     }
+
+    //Huy's code: get number of surrounding ITS
+    using namespace std;
+    const vanetza::geonet::LocationTable& locaTab = getLocationTable();
+    auto neighbour = locaTab.neighbours();
+    long numNeighbours = distance(neighbour.begin(), neighbour.end());
+    emit(scVehCount, numNeighbours);
 
     delete msg;
 }

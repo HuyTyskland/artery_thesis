@@ -32,6 +32,9 @@ class Router : public omnetpp::cSimpleModule, public omnetpp::cListener
         const vanetza::geonet::LocationTable& getLocationTable() const;
         const vanetza::geonet::LongPositionVector& getEgoPositionVector() const;
 
+        //Huy's signal
+        static const omnetpp::simsignal_t scVehCount;
+
     protected:
         virtual void initializeManagementInformationBase(vanetza::geonet::ManagementInformationBase&);
         vanetza::geonet::Address generateAddress(const vanetza::MacAddress&);

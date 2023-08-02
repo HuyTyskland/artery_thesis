@@ -19,7 +19,13 @@ simple LimericDccEntity like IDccEntity
         double adaptedAlpha = default(0.016);
         double adaptedBeta = default(0.0012);
 
+        //Huy's enable dynamic beta
+        bool enableDynamicBeta = default(false);
+
         //Huy's signal
+        @signal[testingVehCount](type=long);
+        @statistic[VehNum_Limeric](source=testingVehCount; record=vector);
+
         @signal[averageCBR](type=double);
         @statistic[avgCBR](source=averageCBR; record=vector);
 

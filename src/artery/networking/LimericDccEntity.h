@@ -15,6 +15,10 @@ public:
     void finish() override;
     vanetza::dcc::TransmitRateThrottle* getTransmitRateThrottle() override;
 
+    //Huy's cListener
+    void receiveSignal(omnetpp::cComponent*, omnetpp::simsignal_t, long, omnetpp::cObject*) override;
+    bool dynamicBeta;
+
 protected:
     void initializeTransmitRateControl() override;
     vanetza::dcc::TransmitRateControl* getTransmitRateControl() override;

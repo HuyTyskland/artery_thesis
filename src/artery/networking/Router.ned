@@ -6,6 +6,9 @@ simple Router
         @class(Router);
         @signal[IdentityChanged](type=long);
         @signal[LinkReception](type=GeoNetPacket);
+        //Huy's signal
+        @signal[VehCount](type=long);
+        @statistic[VehCount_router](source=VehCount; record=vector);
 
         @statistic[LinkLatency](source="messageAge(LinkReception)"; unit=s; record=vector?);
 
