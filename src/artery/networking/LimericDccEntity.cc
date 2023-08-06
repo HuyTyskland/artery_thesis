@@ -46,9 +46,6 @@ void LimericDccEntity::initializeTransmitRateControl()
     UnitInterval beta(par("adaptedBeta"));
     params.beta = beta;
 
-    //Huy's code: enable dynamic beta
-    dynamicBeta = par("enableDynamicBeta");
-
     mAlgorithm.reset(new Limeric(*mRuntime, params));
     if (par("enableDualAlpha")) {
         Limeric::DualAlphaParameters dual_params;
@@ -75,10 +72,11 @@ void LimericDccEntity::onGlobalCbr(vanetza::dcc::ChannelLoad cbr)
 void LimericDccEntity::receiveSignal(cComponent*, simsignal_t signal, long value, cObject*)
 {
     using namespace vanetza;
-    if ((signal == Router::scVehCount) && dynamicBeta)
+    if ((signal == Router::scVehCount) && par("enableDynamicBeta"))
     {
         emit(scTestingVehCount, value);
-        UnitInterval new_beta(1/value);
+        double estimatedBeta = 1/(double)value;
+        UnitInterval new_beta(estimatedBeta);
         mAlgorithm->update_beta(new_beta);
     }
 }

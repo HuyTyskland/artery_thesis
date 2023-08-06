@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<routes>
+    <vType id="nonPlatoon" vClass="passenger" length="5" maxSpeed="10" speedDev="0.0" color="1,1,1" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
+      <param key="vehroute.output.sorted" value="true"/>
+    </vType>
+    <vType id="platoonLeader" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="1,0,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
+      <param key="vehroute.output.sorted" value="true"/>
+   </vType>
+    <vType id="laneLeader" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="0,1,0" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
+      <param key="vehroute.output.sorted" value="true"/>
+   </vType>
+    <vType id="member" vClass="passenger" length="5" maxSpeed="5" speedDev="0.0" color="0,0,1" lcSpeedGain="0" lcKeepRight="0" lcCooperative="0">
+      <param key="vehroute.output.sorted" value="true"/>
+   </vType>
+    <route id="route0" edges="hw0">
+    </route>
+    <route id="route1" edges="hw1">
+    </route>
+    
+    <vehicle id="pl_a1" type="platoonLeader" route="route0" depart="0" departLane="0" departSpeed="max"> <!--[0]-->              <!---->
+    </vehicle>
+    <vehicle id="ll_a1" type="laneLeader" route="route0" depart="0" departLane="1" departSpeed="max"> <!--[1]-->              <!---->
+    </vehicle>
+    <vehicle id="pl_c1" type="platoonLeader" route="route0" depart="0" departLane="4" departSpeed="max"> <!--[2]-->              <!---->
+    </vehicle>
+    <vehicle id="ll_c1" type="laneLeader" route="route0" depart="0" departLane="5" departSpeed="max"> <!--[1]-->              <!---->
+    </vehicle>
+    <vehicle id="m1_a1" type="member" route="route0" depart="2" departLane="0" departSpeed="max"/> <!--and so on...-->
+    <vehicle id="m3_a1" type="member" route="route0" depart="2" departLane="1" departSpeed="max"/><!--[5]-->
+    <vehicle id="m1_c1" type="member" route="route0" depart="2" departLane="4" departSpeed="max"/>
+    <vehicle id="m3_c1" type="member" route="route0" depart="2" departLane="5" departSpeed="max"/>
+    <vehicle id="m2_a1" type="member" route="route0" depart="4" departLane="0" departSpeed="max"/>
+    <vehicle id="m4_a1" type="member" route="route0" depart="4" departLane="1" departSpeed="max"/>
+    <vehicle id="m2_c1" type="member" route="route0" depart="4" departLane="4" departSpeed="max"/><!--[10]-->
+    <vehicle id="m4_c1" type="member" route="route0" depart="4" departLane="5" departSpeed="max"/>
+    <vehicle id="pl_b1" type="platoonLeader" route="route0" depart="5" departLane="2" departSpeed="max">               <!---->  
+    </vehicle>                               
+    <vehicle id="ll_b1" type="laneLeader" route="route0" depart="5" departLane="3" departSpeed="max">                    <!---->  
+    </vehicle>                              
+    <vehicle id="m1_b1" type="member" route="route0" depart="7" departLane="2" departSpeed="max"/>                                          
+    <vehicle id="m3_b1" type="member" route="route0" depart="7" departLane="3" departSpeed="max"/><!--[15]-->                               
+    <vehicle id="m2_b1" type="member" route="route0" depart="9" departLane="2" departSpeed="max"/>                                          
+    <vehicle id="m4_b1" type="member" route="route0" depart="9" departLane="3" departSpeed="max"/>                                          
+    <vehicle id="pl_a2" type="platoonLeader" route="route0" depart="10" departLane="0" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="ll_a2" type="laneLeader" route="route0" depart="10" departLane="1" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="pl_c2" type="platoonLeader" route="route0" depart="10" departLane="4" departSpeed="max"><!--[20]-->              <!---->
+    </vehicle>
+    <vehicle id="ll_c2" type="laneLeader" route="route0" depart="10" departLane="5" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="m1_a2" type="member" route="route0" depart="12" departLane="0" departSpeed="max"/>
+    <vehicle id="m3_a2" type="member" route="route0" depart="12" departLane="1" departSpeed="max"/>
+    <vehicle id="m1_c2" type="member" route="route0" depart="12" departLane="4" departSpeed="max"/>
+    <vehicle id="m3_c2" type="member" route="route0" depart="12" departLane="5" departSpeed="max"/><!--[25]-->
+    <vehicle id="m2_a2" type="member" route="route0" depart="14" departLane="0" departSpeed="max"/>
+    <vehicle id="m4_a2" type="member" route="route0" depart="14" departLane="1" departSpeed="max"/>
+    <vehicle id="m2_c2" type="member" route="route0" depart="14" departLane="4" departSpeed="max"/>
+    <vehicle id="m4_c2" type="member" route="route0" depart="14" departLane="5" departSpeed="max"/>
+    <vehicle id="pl_b2" type="platoonLeader" route="route0" depart="15" departLane="2" departSpeed="max"><!--[30]-->                     <!---->   
+    </vehicle>                         
+    <vehicle id="ll_b2" type="laneLeader" route="route0" depart="15" departLane="3" departSpeed="max">                                         <!---->  
+    </vehicle>      
+    <vehicle id="m1_b2" type="member" route="route0" depart="17" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m3_b2" type="member" route="route0" depart="17" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="m2_b2" type="member" route="route0" depart="19" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m4_b2" type="member" route="route0" depart="19" departLane="3" departSpeed="max"/><!--[35]-->                                   
+    <vehicle id="pl_a3" type="platoonLeader" route="route0" depart="20" departLane="0" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="ll_a3" type="laneLeader" route="route0" depart="20" departLane="1" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="pl_c3" type="platoonLeader" route="route0" depart="20" departLane="4" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="ll_c3" type="laneLeader" route="route0" depart="20" departLane="5" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="m1_a3" type="member" route="route0" depart="22" departLane="0" departSpeed="max"/><!--[40]-->
+    <vehicle id="m3_a3" type="member" route="route0" depart="22" departLane="1" departSpeed="max"/>
+    <vehicle id="m1_c3" type="member" route="route0" depart="22" departLane="4" departSpeed="max"/>
+    <vehicle id="m3_c3" type="member" route="route0" depart="22" departLane="5" departSpeed="max"/>
+    <vehicle id="m2_a3" type="member" route="route0" depart="24" departLane="0" departSpeed="max"/>
+    <vehicle id="m4_a3" type="member" route="route0" depart="24" departLane="1" departSpeed="max"/><!--[45]-->
+    <vehicle id="m2_c3" type="member" route="route0" depart="24" departLane="4" departSpeed="max"/>
+    <vehicle id="m4_c3" type="member" route="route0" depart="24" departLane="5" departSpeed="max"/>
+    <vehicle id="pl_b3" type="platoonLeader" route="route0" depart="25" departLane="2" departSpeed="max">                                <!---->  
+    </vehicle>               
+    <vehicle id="ll_b3" type="laneLeader" route="route0" depart="25" departLane="3" departSpeed="max">                                  <!---->
+    </vehicle>
+    <vehicle id="m1_b3" type="member" route="route0" depart="27" departLane="2" departSpeed="max"/><!--[50]-->                                   
+    <vehicle id="m3_b3" type="member" route="route0" depart="27" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="m2_b3" type="member" route="route0" depart="29" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m4_b3" type="member" route="route0" depart="29" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="pl_a4" type="platoonLeader" route="route0" depart="30" departLane="0" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="ll_a4" type="laneLeader" route="route0" depart="30" departLane="1" departSpeed="max"><!--[55]-->              <!---->
+    </vehicle>
+    <vehicle id="pl_c4" type="platoonLeader" route="route0" depart="30" departLane="4" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="ll_c4" type="laneLeader" route="route0" depart="30" departLane="5" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="m1_a4" type="member" route="route0" depart="32" departLane="0" departSpeed="max"/>
+    <vehicle id="m3_a4" type="member" route="route0" depart="32" departLane="1" departSpeed="max"/>
+    <vehicle id="m1_c4" type="member" route="route0" depart="32" departLane="4" departSpeed="max"/><!--[60]-->
+    <vehicle id="m3_c4" type="member" route="route0" depart="32" departLane="5" departSpeed="max"/>
+    <vehicle id="m2_a4" type="member" route="route0" depart="34" departLane="0" departSpeed="max"/>
+    <vehicle id="m4_a4" type="member" route="route0" depart="34" departLane="1" departSpeed="max"/>
+    <vehicle id="m2_c4" type="member" route="route0" depart="34" departLane="4" departSpeed="max"/>
+    <vehicle id="m4_c4" type="member" route="route0" depart="34" departLane="5" departSpeed="max"/><!--[65]-->
+    <vehicle id="pl_b4" type="platoonLeader" route="route0" depart="35" departLane="2" departSpeed="max">                                <!----> 
+    </vehicle>            
+    <vehicle id="ll_b4" type="laneLeader" route="route0" depart="35" departLane="3" departSpeed="max">                                   <!---->
+    </vehicle>
+    <vehicle id="m1_b4" type="member" route="route0" depart="37" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m3_b4" type="member" route="route0" depart="37" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="m2_b4" type="member" route="route0" depart="39" departLane="2" departSpeed="max"/><!--[70]-->                                   
+    <vehicle id="m4_b4" type="member" route="route0" depart="39" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="pl_a5" type="platoonLeader" route="route0" depart="40" departLane="0" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="ll_a5" type="laneLeader" route="route0" depart="40" departLane="1" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="pl_c5" type="platoonLeader" route="route0" depart="40" departLane="4" departSpeed="max">              <!---->
+    </vehicle>
+    <vehicle id="ll_c5" type="laneLeader" route="route0" depart="40" departLane="5" departSpeed="max"><!--[75]-->              <!---->
+    </vehicle>
+    <vehicle id="m1_a5" type="member" route="route0" depart="42" departLane="0" departSpeed="max"/>
+    <vehicle id="m3_a5" type="member" route="route0" depart="42" departLane="1" departSpeed="max"/>
+    <vehicle id="m1_c5" type="member" route="route0" depart="42" departLane="4" departSpeed="max"/>
+    <vehicle id="m3_c5" type="member" route="route0" depart="42" departLane="5" departSpeed="max"/>
+    <vehicle id="m2_a5" type="member" route="route0" depart="44" departLane="0" departSpeed="max"/><!--[80]-->
+    <vehicle id="m4_a5" type="member" route="route0" depart="44" departLane="1" departSpeed="max"/>
+    <vehicle id="m2_c5" type="member" route="route0" depart="44" departLane="4" departSpeed="max"/>
+    <vehicle id="m4_c5" type="member" route="route0" depart="44" departLane="5" departSpeed="max"/>
+    <vehicle id="pl_b5" type="platoonLeader" route="route0" depart="45" departLane="2" departSpeed="max">                                 <!----> 
+    </vehicle>               
+    <vehicle id="ll_b5" type="laneLeader" route="route0" depart="45" departLane="3" departSpeed="max"><!--[85]-->                             <!---->  
+    </vehicle>                  
+    <vehicle id="m1_b5" type="member" route="route0" depart="47" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m3_b5" type="member" route="route0" depart="47" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="m2_b5" type="member" route="route0" depart="49" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m4_b5" type="member" route="route0" depart="49" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="pl_a6" type="platoonLeader" route="route0" depart="50" departLane="0" departSpeed="max"><!--[90]-->                          <!---->
+    </vehicle>
+    <vehicle id="ll_a6" type="laneLeader" route="route0" depart="50" departLane="1" departSpeed="max">                                             <!---->
+    </vehicle>
+    <vehicle id="pl_c6" type="platoonLeader" route="route0" depart="50" departLane="4" departSpeed="max">                                            <!---->
+    </vehicle>
+    <vehicle id="ll_c6" type="laneLeader" route="route0" depart="50" departLane="5" departSpeed="max">                                           <!---->
+    </vehicle>
+    <vehicle id="m1_a6" type="member" route="route0" depart="52" departLane="0" departSpeed="max"/>
+    <vehicle id="m3_a6" type="member" route="route0" depart="52" departLane="1" departSpeed="max"/><!--[95]-->
+    <vehicle id="m1_c6" type="member" route="route0" depart="52" departLane="4" departSpeed="max"/>
+    <vehicle id="m3_c6" type="member" route="route0" depart="52" departLane="5" departSpeed="max"/>
+    <vehicle id="m2_a6" type="member" route="route0" depart="54" departLane="0" departSpeed="max"/>
+    <vehicle id="m4_a6" type="member" route="route0" depart="54" departLane="1" departSpeed="max"/>
+    <vehicle id="m2_c6" type="member" route="route0" depart="54" departLane="4" departSpeed="max"/><!--[100]-->
+    <vehicle id="m4_c6" type="member" route="route0" depart="54" departLane="5" departSpeed="max"/>                                     
+    <vehicle id="pl_b6" type="platoonLeader" route="route0" depart="55" departLane="2" departSpeed="max">                                            <!----> 
+    </vehicle>    
+    <vehicle id="ll_b6" type="laneLeader" route="route0" depart="55" departLane="3" departSpeed="max">                                                 <!---->
+    </vehicle>
+    <vehicle id="m1_b6" type="member" route="route0" depart="57" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m3_b6" type="member" route="route0" depart="57" departLane="3" departSpeed="max"/><!--[105]-->                                   
+    <vehicle id="m2_b6" type="member" route="route0" depart="59" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m4_b6" type="member" route="route0" depart="59" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="pl_a7" type="platoonLeader" route="route0" depart="60" departLane="0" departSpeed="max">                          <!---->
+    </vehicle>
+    <vehicle id="ll_a7" type="laneLeader" route="route0" depart="60" departLane="1" departSpeed="max">                          <!---->
+    </vehicle>
+    <vehicle id="pl_c7" type="platoonLeader" route="route0" depart="60" departLane="4" departSpeed="max"><!--[110]-->              <!---->
+    </vehicle>
+    <vehicle id="ll_c7" type="laneLeader" route="route0" depart="60" departLane="5" departSpeed="max">                               <!---->
+    </vehicle>
+    <vehicle id="m1_a7" type="member" route="route0" depart="62" departLane="0" departSpeed="max"/>
+    <vehicle id="m3_a7" type="member" route="route0" depart="62" departLane="1" departSpeed="max"/>
+    <vehicle id="m1_c7" type="member" route="route0" depart="62" departLane="4" departSpeed="max"/>
+    <vehicle id="m3_c7" type="member" route="route0" depart="62" departLane="5" departSpeed="max"/><!--[115]-->
+    <vehicle id="m2_a7" type="member" route="route0" depart="64" departLane="0" departSpeed="max"/>
+    <vehicle id="m4_a7" type="member" route="route0" depart="64" departLane="1" departSpeed="max"/>
+    <vehicle id="m2_c7" type="member" route="route0" depart="64" departLane="4" departSpeed="max"/>
+    <vehicle id="m4_c7" type="member" route="route0" depart="64" departLane="5" departSpeed="max"/>
+    <vehicle id="pl_b7" type="platoonLeader" route="route0" depart="65" departLane="2" departSpeed="max"><!--[120]-->                   <!----> 
+    </vehicle>                            
+    <vehicle id="ll_b7" type="laneLeader" route="route0" depart="65" departLane="3" departSpeed="max">                                <!----> 
+    </vehicle>                
+    <vehicle id="m1_b7" type="member" route="route0" depart="67" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m3_b7" type="member" route="route0" depart="67" departLane="3" departSpeed="max"/>                                   
+    <vehicle id="m2_b7" type="member" route="route0" depart="69" departLane="2" departSpeed="max"/>                                   
+    <vehicle id="m4_b7" type="member" route="route0" depart="69" departLane="3" departSpeed="max"/><!--[125]-->                                   
+    <vehicle id="pl_a8" type="platoonLeader" route="route0" depart="70" departLane="0" departSpeed="max">                                <!---->
+    </vehicle>
+    <vehicle id="ll_a8" type="laneLeader" route="route0" depart="70" departLane="1" departSpeed="max">                                    <!---->
+    </vehicle>
+    <vehicle id="pl_c8" type="platoonLeader" route="route0" depart="70" departLane="4" departSpeed="max">                                       <!---->
+    </vehicle>
+    <vehicle id="ll_c8" type="laneLeader" route="route0" depart="70" departLane="5" departSpeed="max">                                            <!---->
+    </vehicle>
+    <vehicle id="m1_a8" type="member" route="route0" depart="72" departLane="0" departSpeed="max"/><!--[130]-->
+    <vehicle id="m3_a8" type="member" route="route0" depart="72" departLane="1" departSpeed="max"/>
+    <vehicle id="m1_c8" type="member" route="route0" depart="72" departLane="4" departSpeed="max"/>
+    <vehicle id="m3_c8" type="member" route="route0" depart="72" departLane="5" departSpeed="max"/>
+    <vehicle id="m2_a8" type="member" route="route0" depart="74" departLane="0" departSpeed="max"/>
+    <vehicle id="m4_a8" type="member" route="route0" depart="74" departLane="1" departSpeed="max"/><!--[135]-->
+    <vehicle id="m2_c8" type="member" route="route0" depart="74" departLane="4" departSpeed="max"/>
+    <vehicle id="m4_c8" type="member" route="route0" depart="74" departLane="5" departSpeed="max"/>
+
+
+    <flow id="flow_lane0" color="1,1,0" begin="150" end="185" number="33" type="nonPlatoon" departLane="0" route="route1">
+      <stop lane="hw1_0" startPos="1075" speed="5"/>
+    </flow>
+    <flow id="flow_lane1" color="1,1,0" begin="150" end="185" number="33" type="nonPlatoon" departLane="1" route="route1">
+      <stop lane="hw1_1" startPos="1075" speed="5"/>
+    </flow>
+    <flow id="flow_lane2" color="1,1,0" begin="150" end="185" number="33" type="nonPlatoon" departLane="2" route="route1">
+      <stop lane="hw1_2" startPos="1075" speed="5"/>
+    </flow>
+</routes>

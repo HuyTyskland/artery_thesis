@@ -16,4 +16,8 @@
         <listener port="2001" />
         <filters><name pattern="ll.*" /></filters>
     </service>
+    <service type="artery.application.CaService">
+        <listener port="2001" />
+        <filters><name pattern="flow_lane.*" /></filters>
+    </service>
 </services>

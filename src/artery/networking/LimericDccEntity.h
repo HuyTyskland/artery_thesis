@@ -17,7 +17,6 @@ public:
 
     //Huy's cListener
     void receiveSignal(omnetpp::cComponent*, omnetpp::simsignal_t, long, omnetpp::cObject*) override;
-    bool dynamicBeta;
 
 protected:
     void initializeTransmitRateControl() override;

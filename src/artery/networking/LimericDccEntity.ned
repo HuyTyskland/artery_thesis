@@ -20,7 +20,7 @@ simple LimericDccEntity like IDccEntity
         double adaptedBeta = default(0.0012);
 
         //Huy's enable dynamic beta
-        bool enableDynamicBeta = default(false);
+        bool enableDynamicBeta = default(true);
 
         //Huy's signal
         @signal[testingVehCount](type=long);
