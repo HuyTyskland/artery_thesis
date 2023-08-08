@@ -10,6 +10,8 @@ using namespace omnetpp;
 //Huy's signal
 const simsignal_t scAverageCBR = cComponent::registerSignal("averageCBR");
 const simsignal_t scTestingVehCount = cComponent::registerSignal("testingVehCount");
+const simsignal_t scUpdatedBeta = cComponent::registerSignal("updatedBeta");
+const simsignal_t scDelta = cComponent::registerSignal("currentDelta");
 
 Define_Module(LimericDccEntity)
 
@@ -66,6 +68,8 @@ void LimericDccEntity::onGlobalCbr(vanetza::dcc::ChannelLoad cbr)
     ASSERT(mAlgorithm);
     mAlgorithm->update_cbr(cbr);
     emit(scAverageCBR, (mAlgorithm->average_cbr()).value());
+    double calculatedDelta = (mAlgorithm->returnDelta()).value();
+    emit(scDelta, calculatedDelta);
 }
 
 //Huy's receive signal function
@@ -79,6 +83,8 @@ void LimericDccEntity::receiveSignal(cComponent*, simsignal_t signal, long value
         UnitInterval new_beta(estimatedBeta);
         mAlgorithm->update_beta(new_beta);
     }
+    double updatedBeta = mAlgorithm->returnBeta();
+    emit(scUpdatedBeta, updatedBeta);
 }
 
 } // namespace arterd

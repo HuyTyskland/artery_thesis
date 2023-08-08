@@ -20,7 +20,7 @@ simple LimericDccEntity like IDccEntity
         double adaptedBeta = default(0.0012);
 
         //Huy's enable dynamic beta
-        bool enableDynamicBeta = default(true);
+        bool enableDynamicBeta = default(false);
 
         //Huy's signal
         @signal[testingVehCount](type=long);
@@ -28,6 +28,12 @@ simple LimericDccEntity like IDccEntity
 
         @signal[averageCBR](type=double);
         @statistic[avgCBR](source=averageCBR; record=vector);
+
+        @signal[updatedBeta](type=double);
+        @statistic[newBeta](source=updatedBeta; record=vector);
+
+        @signal[currentDelta](type=double);
+        @statistic[deltaValue](source=deltaValue; record=vector);
 
     gates:
         output radioDriverData;
